@@ -13,13 +13,13 @@ To run this application you need to set the OpenAI API key in the *.env* file. I
 ## Running the Application
 Option 1: Direct Execution
 
-To run the application, run the following command on your CLI where the folder is located:
+To run the application, run the following command on your CLI inside the project folder:
 
     streamlit run main.py
 
 Option 2: Containerized Execution
 
-To run the application, run the following commands on your CLI where the folder is located:
+To run the application, run the following commands on your CLI inside the project folder:
 
     docker build -t docubot_image .
     docker run -d -p 8501:8501 --name docubot_container docubot_image

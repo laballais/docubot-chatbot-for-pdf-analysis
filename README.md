@@ -15,7 +15,7 @@ Option 1: Direct Execution
 
 To run the application, run the following command on your CLI where the folder is located:
 
-    streamlit run bot.py
+    streamlit run main.py
 
 Option 2: Containerized Execution
 

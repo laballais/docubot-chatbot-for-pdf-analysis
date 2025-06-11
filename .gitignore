@@ -1,0 +1,6 @@
+# FOLDERS
+__pycache__/
+chat_histories/
+
+# SPECIFIC FILES
+my.env

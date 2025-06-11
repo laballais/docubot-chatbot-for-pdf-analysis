@@ -64,5 +64,27 @@ Handling PDF uploads and text extraction required refining the pipeline to ensur
 I encountered a limitation in Streamlit's UI where, if only one file is uploaded or is remaining in the UI, the stored list of uploaded files does not refresh automatically. Because of this, after uploading PDFs and then removing them by clicking all the "X" buttons, the last remaining file is still retained in my session history (and therefore the json file) instead of being cleared. Although it must be noted that this saved file (or context in the json file) can be replaced by uploading again another PDF.
 
 ## Prompt Engineering Strategies
-Structured instructions are used for the prompts to get refined responses. The prompt engineering strategy used ensures responses are fact-driven, well-structured, and user-friendly to optimize formatting, contextual awareness, and conversational flow.
+Structured instructions are used for the prompts to get refined responses. The prompt engineering strategy used ensures responses are fact-driven, well-structured, and user-friendly to optimize formatting, contextual awareness, and conversational flow. The following prompt was used:
+
+                            f"""
+                            You are a document analysis assistant. Given the document, format your response **clearly and neatly**.
+
+                            Context: {relevant_text}
+
+                            Question: {user_input}
+
+                            Make your answer **clear, concise, and fact-based**.
+                            
+                            Use a uniform font for your response so the reponse is readable. Manually put spaces between words where needed.
+                             
+                            If the document doesn't contain relevant information, say so.
+                            
+                            If the answer contains numerical data, output a well-structured table with headers.
+
+                            If summarizing, provide a **brief, well-structured overview** with key bullet points.
+
+                            If this question **relates to a previous query**, reference past responses before answering.
+    
+                            If clarification is needed, politely ask the user before responding.
+                            """
 

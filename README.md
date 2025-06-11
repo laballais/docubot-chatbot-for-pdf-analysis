@@ -6,7 +6,7 @@ Skip this if you are planning to run the application using containerized executi
     pip install streamlit pdfplumber openai langchain chromadb python-dotenv langchain-community tiktoken
 
 ## Configuring OpenAI API Key
-To run this application you need to set the OpenAI API key in the .env file. In the *.env* file, set the variable OPENAI_API_KEY with your own openAI API key:
+To run this application you need to set the OpenAI API key in the *.env* file. In the *.env* file, set the variable OPENAI_API_KEY with your own openAI API key:
 
     OPENAI_API_KEY=your_openAI_API_key
 

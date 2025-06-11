@@ -38,7 +38,7 @@ You may then ask questions related to the uploaded documents.
 If no file is uploaded, you will be notifed to upload a PDF first. The application can handle many file uploads. 
 For multiple PDF uploads, you can remove an uploaded file as a reference for the chatbot by clicking the "X" button that appears beside the file name after successful file upload.
 
-You may start a new chat by clicking the "*Create New Chat*" button on the left sidebar. Your current chat session will be automatially saved. You may also "*Delete Current Cha*t" or "*Clear All Chat Sessions*". You may also choose which chat session to load and continue the session.
+You may start a new chat session by clicking the "*Create New Chat*" button on the left sidebar. Your current chat session will be automatially saved. You may also "*Delete Current Chat*" or "*Clear All Chat Sessions*". You may also choose which chat session to load and continue the session.
 
 You may also configure the settings of the LLM on the left sidebar by selecting the model, temperature, top-p, and max tokens values for the LLM. Click the "*Conifg LLM*" button to apply the chosen parameter values.
 

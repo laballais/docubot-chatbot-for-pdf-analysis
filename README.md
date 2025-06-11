@@ -48,11 +48,11 @@ The development of the DocuBot application was driven by the need to create a sc
 
 One of the core design decisions was structuring the application into three separate Python files:
 
-    main.py: Handles core functionality, including UI management, document processing, and chatbot interactions.
+    - main.py: Handles core functionality, including UI management, document processing, and chatbot interactions.
 
-    session_manager.py: Manages chat sessions, ensuring that previous conversations and context are accessible when needed.
-    
-    llm_config.py: Provides a dynamic interface for configuring LLM parameters, making chatbot responses customizable.
+    - session_manager.py: Manages chat sessions, ensuring that previous conversations and context are accessible when needed.
+
+    - llm_config.py: Provides a dynamic interface for configuring LLM parameters, making chatbot responses customizable.
 
 This modular approach ensures easier debugging, scalability, and separation of concerns. Each component serves a specific function, reducing interdependencies that could hinder future improvements.
 

@@ -2,27 +2,32 @@
 
 ## Dependencies
 Skip this if you are planning to run the application using containerized execution. You may install the dependencies using the following command:
-    'pip install streamlit pdfplumber openai langchain chromadb python-dotenv langchain-community tiktoken'
+
+    pip install streamlit pdfplumber openai langchain chromadb python-dotenv langchain-community tiktoken
 
 ## Configuring OpenAI API Key
 To run this application you need to set the OpenAI API key in the .env file. In the .env file, set the variable OPENAI_API_KEY with your own openAI API key:
-    'OPENAI_API_KEY=your_openAI_API_key'
+
+    OPENAI_API_KEY=your_openAI_API_key
 
 ## Running the Application
 Option 1: Direct Execution
 To run the application, run the following command on your CLI where the folder is located:
-    'streamlit run bot.py'
+
+    streamlit run bot.py
 
 Option 2: Containerized Execution
 To run the application, run the following commands on your CLI where the folder is located:
-    'docker build -t docubot_image .'
-    'docker run -d -p 8501:8501 --name docubot_container docubot_image'
+
+    docker build -t docubot_image .
+    docker run -d -p 8501:8501 --name docubot_container docubot_image
 
 Open http://localhost:8501/ to view the application.
 
 ## General Overview of the Application
 To use to application, upload a PDF. Once a PDF is successfully uploaded, the text similar to the one below will appear.
-'"Uploaded Reference Files: your_pdf_file.pdf"'
+
+    "Uploaded Reference Files: your_pdf_file.pdf"
 
 You may then ask questions related to the uploaded documents. The application follows the specification.
 If no file is uploaded, you will be notifed to upload a PDF first. The application can handle many file uploads. 

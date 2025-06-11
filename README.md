@@ -58,7 +58,7 @@ This modular approach ensures easier debugging, scalability, and separation of c
 
 To maintain conversational continuity, chat sessions are stored in JSON files, preserving user messages, document texts for context, and uploaded filenames. The session manager ensures chat history retrieval for ongoing discussions, proper resetting of messages and documents when new sessions begin, and efficient deletion and clearing of old sessions. This provides a seamless user experience, preventing unnecessary data loss while keeping interactions organized.
 
-- Sample JSON file that stores a chat session:
+A sample JSON file that stores a chat session is shown below.
 
    ```json
     {
@@ -80,7 +80,7 @@ To maintain conversational continuity, chat sessions are stored in JSON files, p
         ]
     }
 
-On UI, the saved JSON file for the chat session looks like the image below.
+On UI, the saved JSON file above looks like the image below.
 
 ![alt text](saved_chat_session.png)
 

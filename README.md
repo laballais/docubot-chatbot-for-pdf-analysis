@@ -80,6 +80,7 @@ A sample JSON file that stores a chat session is shown below.
         ]
     }
 
+
 On UI, the saved JSON file above looks like the image below.
 
 ![alt text](saved_chat_session.png)

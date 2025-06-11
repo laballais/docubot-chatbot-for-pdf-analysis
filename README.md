@@ -59,6 +59,7 @@ This modular approach ensures easier debugging, scalability, and separation of c
 To maintain conversational continuity, chat sessions are stored in JSON files, preserving user messages, document texts for context, and uploaded filenames. The session manager ensures chat history retrieval for ongoing discussions, proper resetting of messages and documents when new sessions begin, and efficient deletion and clearing of old sessions. This provides a seamless user experience, preventing unnecessary data loss while keeping interactions organized.
 
 - Sample JSON file that stores a chat session:
+
     {
         "messages": [
             {
@@ -77,6 +78,10 @@ To maintain conversational continuity, chat sessions are stored in JSON files, p
             "Guide on how to take care of your Shihpoo (M).pdf"
         ]
     }
+
+On UI, the saved JSON file for the chat session looks like the image below.
+
+![alt text](saved chat session.png)
 
 Handling PDF uploads and text extraction required refining the pipeline to ensure multi-page extraction, whitespace and formatting adjustments, proper document text segmentation using RecursiveCharacterTextSplitter. This preprocessing step ensures that vector embeddings for document queries remain accurate and contextually relevant when answering user questions.
 

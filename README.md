@@ -60,6 +60,7 @@ To maintain conversational continuity, chat sessions are stored in JSON files, p
 
 - Sample JSON file that stores a chat session:
 
+   ```json
     {
         "messages": [
             {
@@ -72,7 +73,7 @@ To maintain conversational continuity, chat sessions are stored in JSON files, p
             }
         ],
         "document_texts": [
-            "You have\nThank you for\nchosen a\nchoosing us.\nPuppy Boy!\n-Pamilya Ko\nKennel\nNext Guide on how to take\ncare of your Shihpoo\nBy: Pamilya Ko Kennel\nNext 1.Always check his Vet card for\nscheduled vaccination,\ndeworming, etc.\n2. He is currently eating soft\nfoods since his teeth are still tiny\nand sensitive. Please feed him\nNutrichunks Puppy soaked in\nmilk or water twice daily\n(morning and evening). If you feel\nthat he needs to eat in the\nafternoon you can give him small\namount of kibbles as snack (not\nheavy meal)\n3. You can give him toys to play\nwith but those that are not easily\nswallowed. Do not let him chew\nyour slippers or anything from\nthe outside nor let him walk\noutside since he is not yet fully\nvaccinated.\nNext 4. Its almost rainy season. If\npossible let him stay inside since\nparvo, distemper and other\nvirus/ bacteria are active during\nwet and cold season.\n5. Do not feed him any kind of\nbones cause his teeth is not yet\ncapable of chewing. It could also\nchoke him. Puppy teeth will be\nreplaced by less sharp and big\nth th\nones on his 6 to 8 months\n6. For increase appetite, you can\nbuy vitamins for him from the\nVet given once daily.\n7. Puppies are very playful. Note\nto be careful while playing with\nthem. Anti Rabies vaccines will be\nrd\ngiven to him on his 3 month\ntogether with the last shot of 6\nin 1.\nNext 8. From 6 months old you need to\nadminister deworming every 3\nmonths\n9. Regular grooming starts on his\nth\n8 month. Before that you can\ntry to trim her fur around her\nEyes, Feet, bum and Ear.\nRemember to be careful on\ncutting.\n10. Always clean him after eating\nand pooping by using wet towels\nor wipes. Clean areas around the\neyes, mouth, ears, paw and bum.\nYou can give her a bath once a\nweek or depending on your liking.\nFor other concerns, you can\nalways reach me. Please note\nthat I am not an expert but\nexperience helped me to gain\nideas on how to take care of my\nPets. Good luck!"
+            "You have\nThank you for\nchosen a\nchoosing us.\nPuppy Boy!\n-Pamilya Ko\nKennel\nNext Guide on how to take\ncare of your Shihpoo..."
         ],
         "uploaded_file_names": [
             "Guide on how to take care of your Shihpoo (M).pdf"
@@ -81,7 +82,7 @@ To maintain conversational continuity, chat sessions are stored in JSON files, p
 
 On UI, the saved JSON file for the chat session looks like the image below.
 
-![alt text](saved chat session.png)
+![alt text](saved_chat_session.png)
 
 Handling PDF uploads and text extraction required refining the pipeline to ensure multi-page extraction, whitespace and formatting adjustments, proper document text segmentation using RecursiveCharacterTextSplitter. This preprocessing step ensures that vector embeddings for document queries remain accurate and contextually relevant when answering user questions.
 

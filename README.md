@@ -79,7 +79,7 @@ A sample JSON file that stores a chat session is shown below.
             "Guide on how to take care of your Shihpoo (M).pdf"
         ]
     }
-
+    '''
 
 On UI, the saved JSON file above looks like the image below.
 

@@ -12,11 +12,13 @@ To run this application you need to set the OpenAI API key in the .env file. In 
 
 ## Running the Application
 Option 1: Direct Execution
+
 To run the application, run the following command on your CLI where the folder is located:
 
     streamlit run bot.py
 
 Option 2: Containerized Execution
+
 To run the application, run the following commands on your CLI where the folder is located:
 
     docker build -t docubot_image .
@@ -30,7 +32,7 @@ Open http://localhost:8501/ to view the application.
 
 To use to application, upload a PDF. Once a PDF is successfully uploaded, a text similar to the one below will appear.
 
-    **Uploaded Reference Files:** your_pdf_file.pdf
+> Uploaded Reference Files: your_pdf_file.pdf
 
 You may then ask questions related to the uploaded documents. 
 If no file is uploaded, you will be notifed to upload a PDF first. The application can handle many file uploads. 
@@ -46,9 +48,11 @@ The development of the DocuBot application was driven by the need to create a sc
 
 One of the core design decisions was structuring the application into three separate Python files:
 
-    *main.py:* Handles core functionality, including UI management, document processing, and chatbot interactions.
-    *session_manager.py:* Manages chat sessions, ensuring that previous conversations and context are accessible when needed.
-    *llm_config.py:* Provides a dynamic interface for configuring LLM parameters, making chatbot responses customizable.
+    main.py: Handles core functionality, including UI management, document processing, and chatbot interactions.
+
+    session_manager.py: Manages chat sessions, ensuring that previous conversations and context are accessible when needed.
+    
+    llm_config.py: Provides a dynamic interface for configuring LLM parameters, making chatbot responses customizable.
 
 This modular approach ensures easier debugging, scalability, and separation of concerns. Each component serves a specific function, reducing interdependencies that could hinder future improvements.
 

@@ -3,6 +3,7 @@ import streamlit as st
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.prompts import PromptTemplate
 from llm_config import configure_llm_sidebar, update_llm
 from session_manager import manage_sessions, load_chat_history, save_chat_history, get_timestamped_session
 
@@ -36,7 +37,6 @@ if uploaded_files:
                 st.warning(f"Could not extract text from {uploaded_file.name}")
             document_texts.append(text)
 
-    # Store extracted text and filenames
     st.session_state.document_texts = document_texts
     st.session_state.uploaded_file_names = [file.name for file in uploaded_files]
     save_chat_history(st.session_state.current_session, st.session_state.messages, document_texts, st.session_state.uploaded_file_names)
@@ -66,37 +66,48 @@ if user_input:
         splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         texts = splitter.split_text(combined_text)
 
-        if texts:  # Ensure texts exist before vector embedding
+        if texts:
             vector_db = Chroma.from_texts(texts, OpenAIEmbeddings())
-            relevant_text = " ".join([doc.page_content for doc in vector_db.similarity_search(user_input, k=2)])
-            # response = st.session_state.llm.predict(f"Context: {relevant_text}\nQuestion: {user_input}")
-            response = st.session_state.llm.predict(
-                            f"""
-                            You are a document analysis assistant. Given the document, format your response **clearly and neatly**.
+            relevant_docs = vector_db.similarity_search(user_input, k=2)
+            relevant_text = " ".join([doc.page_content for doc in relevant_docs])
 
-                            Context: {relevant_text}
+            # Use LangChain PromptTemplate
+            prompt_template = PromptTemplate(
+                input_variables=["context", "question"],
+                template="""
+                    You are a document analysis assistant. Given the document, format your response clearly and neatly.
 
-                            Question: {user_input}
+                    Context:
+                    {context}
 
-                            Make your answer **clear, concise, and fact-based**.
-                            
-                            Use a uniform font for your response so the reponse is readable. Manually put spaces between words where needed.
-                             
-                            If the document doesn't contain relevant information, say so.
-                            
-                            If the answer contains numerical data, output a well-structured table with headers.
+                    Question:
+                    {question}
 
-                            If summarizing, provide a **brief, well-structured overview** with key bullet points.
+                    Make your answer clear, concise, and fact-based.
 
-                            If this question **relates to a previous query**, reference past responses before answering.
-    
-                            If clarification is needed, politely ask the user before responding.
-                            """
-                        )
+                    If the document doesn't contain relevant information, say so.
+
+                    If the answer contains numerical data, output a well-structured table with headers.
+
+                    If summarizing, provide a brief, well-structured overview with key bullet points.
+
+                    If this question relates to a previous query, reference past responses before answering.
+
+                    If clarification is needed, politely ask the user before responding.
+                    """
+            )
+
+            formatted_prompt = prompt_template.format(context=relevant_text, question=user_input)
+            response = st.session_state.llm.predict(formatted_prompt)
         else:
             response = "No relevant text found in uploaded PDFs."
 
         st.session_state.messages.append({"role": "assistant", "text": response})
         st.chat_message("assistant").write(response)
 
-        save_chat_history(st.session_state.current_session, st.session_state.messages, st.session_state.document_texts, st.session_state.uploaded_file_names)
+        save_chat_history(
+            st.session_state.current_session,
+            st.session_state.messages,
+            st.session_state.document_texts,
+            st.session_state.uploaded_file_names
+        )

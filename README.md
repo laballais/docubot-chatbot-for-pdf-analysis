@@ -28,7 +28,7 @@ Open http://localhost:8501/ to view the application.
 
 ## General Overview of the Application
 
-![alt text](docubot.png)
+![alt text](docubot_overview.png)
 
 To use to application, upload a PDF. Once a PDF is successfully uploaded, a text similar to the one below will appear.
 
@@ -82,7 +82,7 @@ To maintain conversational continuity, chat sessions are stored in JSON files, p
 
 On UI, the saved JSON file above looks like the image below.
 
-![alt text](saved_chat_session.png)
+![alt text](chat_session.png)
 
 Handling PDF uploads and text extraction required refining the pipeline to ensure multi-page extraction, whitespace and formatting adjustments, proper document text segmentation using RecursiveCharacterTextSplitter. This preprocessing step ensures that vector embeddings for document queries remain accurate and contextually relevant when answering user questions.
 

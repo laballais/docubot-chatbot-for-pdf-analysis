@@ -42,7 +42,6 @@ You may start a new chat session by clicking the "*Create New Chat*" button on t
 
 You may also configure the settings of the LLM on the left sidebar by selecting the model, temperature, and max tokens values for the LLM. Click the "*Conifg LLM*" button to apply the chosen parameter values.
 
-# Project Journal
 ## Design Decisions and Solutions Implemented
 The development of the DocuBot application was driven by the need to create a scalable, modular, and efficient chatbot for analyzing PDF documents. By leveraging Streamlit, LangChain, and OpenAI’s LLM, the architecture prioritizes modular code design, session-based conversation management, and dynamic LLM configuration.
 
@@ -85,9 +84,6 @@ On UI, the saved JSON file above looks like the image below.
 ![alt text](chat_session.png)
 
 Handling PDF uploads and text extraction required refining the pipeline to ensure multi-page extraction, whitespace and formatting adjustments, proper document text segmentation using RecursiveCharacterTextSplitter. This preprocessing step ensures that vector embeddings for document queries remain accurate and contextually relevant when answering user questions.
-
-## Challenges Faced
-I encountered a limitation in Streamlit's UI where, if only one file is uploaded or is remaining in the UI, the stored list of uploaded files does not refresh automatically. Because of this, after uploading PDFs and then removing them by clicking all the "X" buttons, the last remaining file is still retained in my session history (and therefore the json file) instead of being cleared. Although it must be noted that this saved file (or context in the json file) can be replaced by uploading again another PDF.
 
 ## Prompt Engineering Strategies
 Structured instructions are used for the prompts to get refined responses. The prompt engineering strategy used ensures responses are fact-driven, well-structured, and user-friendly to optimize formatting, contextual awareness, and conversational flow using langchain prompt template. The following prompt was used:

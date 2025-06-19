@@ -92,25 +92,28 @@ I encountered a limitation in Streamlit's UI where, if only one file is uploaded
 ## Prompt Engineering Strategies
 Structured instructions are used for the prompts to get refined responses. The prompt engineering strategy used ensures responses are fact-driven, well-structured, and user-friendly to optimize formatting, contextual awareness, and conversational flow using langchain prompt template. The following prompt was used:
 
-    f"""
-    You are a document analysis assistant. Given the document, format your response **clearly and neatly**.
+    prompt_template = PromptTemplate(
+                input_variables=["context", "question"],
+                template="""
+                    You are a document analysis assistant. Given the document, format your response clearly and neatly.
 
-    Context: {relevant_text}
+                    Context:
+                    {context}
 
-    Question: {user_input}
+                    Question:
+                    {question}
 
-    Make your answer **clear, concise, and fact-based**.
-    
-    Use a uniform font for your response so the reponse is readable. Manually put spaces between words where needed.
-        
-    If the document doesn't contain relevant information, say so.
-    
-    If the answer contains numerical data, output a well-structured table with headers.
+                    Make your answer clear, concise, and fact-based.
 
-    If summarizing, provide a **brief, well-structured overview** with key bullet points.
+                    If the document doesn't contain relevant information, say so.
 
-    If this question **relates to a previous query**, reference past responses before answering.
+                    If the answer contains numerical data, output a well-structured table with headers.
 
-    If clarification is needed, politely ask the user before responding.
-    """
+                    If summarizing, provide a brief, well-structured overview with key bullet points.
+
+                    If this question relates to a previous query, reference past responses before answering.
+
+                    If clarification is needed, politely ask the user before responding.
+                    """
+            )
 
